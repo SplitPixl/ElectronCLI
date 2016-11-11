@@ -32,7 +32,7 @@ module.exports = {
 		case "help":
 			return "You are using ElectronCLI v" + appData.version + ", created by " + appData.author + ".<br><br><strong><u>Commands:</u></strong><br><br>" + 
 			"8ball - Let the 8 ball decide!<br>" +
-			"about - More information on ElectronCLI." + 
+			"about - More information on ElectronCLI.<br>" + 
 			"ping - Pong!";
 		break;
 		
