@@ -5,11 +5,15 @@
 	<title>Hello World!</title>
     <link rel="stylesheet" type="text/css" href="theme.css">
     <script src="jquery.js"></script>
+	<script>
+		const appData = require('../package.json');
+		const alertOnlineStatus = () => {
+			return "You are OFFLINE! Some commands may not work correctly.";
+		}
+	</script>
   </head>
   <body>
-    <h1>
-		ElectronCLI
-	</h1>
+    ElectronCLI [Version <script>document.write(appData.version)</script>]<br>Copyright (c) 2016 SplitPixl
   <div id="buffer">
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
@@ -18,8 +22,8 @@
     $ <span><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }"><!--<span class="blinker">_</span>-->
   </body>
   <script>
-		// You can also require other files to run in this process
-		require('../renderer.js');
+	// You can also require other files to run in this process
+	require('../renderer.js');
     var cmds = require("./commands.js")
     function inputToCLI() {
       var input = document.getElementById("inputMain").value
@@ -27,6 +31,5 @@
       document.getElementById("buffer").innerHTML = buffer + "$ " + input + "<br>" + cmds.run(input) + "<br><br>"
       document.getElementById("inputMain").value = ""
     }
-
-	</script>
+  </script>
 </html>
