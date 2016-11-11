@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 /*TODO: Make font local*/
 
+*:focus {
+    outline: none;
+}
+
 body {
     background-color: #1B1A1F;
     color: #00FF00;
@@ -13,6 +17,12 @@ body {
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
 }
+
+.inputMain:focus {
+	margin-left: 5px;
+	outline: none;
+}
+
 @keyframes blink{
     0% { opacity:1; }
     50% { opacity:0; }
