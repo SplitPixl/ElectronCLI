@@ -2,7 +2,7 @@ module.exports = {
 	run(input) {
     var cinput = input.toLowerCase();
 	let args = cinput.split(' ');
-    switch (cinput) {
+    switch (args[0]) {
 		case "ping":
 			return "Pong!";
 		break;
