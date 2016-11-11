@@ -13,7 +13,7 @@
   <div id="buffer">
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.<br>
+    and Electron <script>document.write(process.versions.electron)</script>.<br><br>
   </div>
     $ <span><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }"><!--<span class="blinker">_</span>-->
   </body>
@@ -24,7 +24,7 @@
     function inputToCLI() {
       var input = document.getElementById("inputMain").value
       var buffer = document.getElementById("buffer").innerHTML
-      document.getElementById("buffer").innerHTML = buffer + "<br>" + "$ " + input + "<br>" + cmds.run(input)
+      document.getElementById("buffer").innerHTML = buffer + "$ " + input + "<br>" + cmds.run(input) + "<br><br>"
       document.getElementById("inputMain").value = ""
     }
 
