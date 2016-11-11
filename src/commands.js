@@ -25,7 +25,10 @@ module.exports = {
 			return "ElectronCLI is a Command-Line interface built from Electron.<br>ElectronCLI was (and currently is being) developed by " + appData.author + ".";
 		break;
 		
-		
+		case "eval":
+			let argstring = args.slice(1).join(" ");
+			return eval(argstring);
+		break;
 		
 		// Large Commands
 		
