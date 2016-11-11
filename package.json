@@ -1,0 +1,14 @@
+{
+  "name": "electron-cli",
+  "version": "1.0.0",
+  "description": "Not sure yet.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "SplitPixl and MattSilverblood",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
