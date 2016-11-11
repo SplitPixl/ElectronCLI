@@ -26,9 +26,8 @@
 	require('../renderer.js');
     var cmds = require("./commands.js")
     function inputToCLI() {
-      var input = document.getElementById("inputMain").value
-      var buffer = document.getElementById("buffer").innerHTML
-      document.getElementById("buffer").innerHTML = buffer + prompt + input + "<br>" + cmds.run(input) + "<br><br>"
+      var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      cmds.run(input, document);
       document.getElementById('inputMain').scrollIntoView();
       document.getElementById("inputMain").value = ""
     }
