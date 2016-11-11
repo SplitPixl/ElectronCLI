@@ -2,11 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-	<title>Hello World!</title>
+	   <title>Hello World!</title>
     <link rel="stylesheet" type="text/css" href="theme.css">
     <script src="jquery.js"></script>
 	<script>
 		const appData = require('../package.json');
+    var os = require('os')
+    var prompt = process.env + "@" + os.hostname() + " $ ";
 	</script>
   </head>
   <body>
@@ -16,7 +18,8 @@
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.<br><br>
   </div>
-    $ <span><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }"><!--<span class="blinker">_</span>-->
+  <span><script>document.write(prompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }"><!--<span class="blinker">_</span>--></span>
+  <a id="#bottom"></a>
   </body>
   <script>
 	// You can also require other files to run in this process
@@ -25,7 +28,8 @@
     function inputToCLI() {
       var input = document.getElementById("inputMain").value
       var buffer = document.getElementById("buffer").innerHTML
-      document.getElementById("buffer").innerHTML = buffer + "$ " + input + "<br>" + cmds.run(input) + "<br><br>"
+      document.getElementById("buffer").innerHTML = buffer + prompt + input + "<br>" + cmds.run(input) + "<br><br>"
+      document.getElementById('inputMain').scrollIntoView();
       document.getElementById("inputMain").value = ""
     }
   </script>
