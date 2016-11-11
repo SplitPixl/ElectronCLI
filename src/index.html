@@ -15,16 +15,16 @@
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.<br>
   </div>
-    <br>
     $ <span><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }"><!--<span class="blinker">_</span>-->
   </body>
   <script>
 		// You can also require other files to run in this process
 		require('../renderer.js');
+    var cmds = require("./commands.js")
     function inputToCLI() {
       var input = document.getElementById("inputMain").value
       var buffer = document.getElementById("buffer").innerHTML
-      document.getElementById("buffer").innerHTML = buffer + "<br>" + input
+      document.getElementById("buffer").innerHTML = buffer + "<br>" + "$ " + input + "<br>" + cmds.run(input)
       document.getElementById("inputMain").value = ""
     }
 
