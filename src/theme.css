@@ -9,6 +9,7 @@ body {
     background-color: #1B1A1F;
     color: #00FF00;
     font-family: 'Ubuntu Mono', monospace;
+    font-size: 16px;
 }
 
 .blinker{
@@ -18,9 +19,12 @@ body {
     animation: blink 0.7s infinite;
 }
 
-.inputMain:focus {
-	margin-left: 5px;
-	outline: none;
+.inputMain {
+  background: transparent;
+  border: none;
+  color: #00FF00;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 16px;
 }
 
 @keyframes blink{
