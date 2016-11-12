@@ -20,7 +20,7 @@ module.exports = {
 		break;
 
 		case "clear":
-			doc.getElementById("buffer") = ""
+			doc.getElementById("buffer").innerHTML = "";
 		break;
 
 		case "about":
