@@ -2,12 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-	   <title>ElectronCLI</title>
+	   <title>ElectronCLI IRC</title>
     <link rel="stylesheet" type="text/css" href="../../../theme.css">
 	<script>
     var os = require('os')
     var ircClient = require('node-irc');
     var iprompt = '> '
+    var myName = 'Pixld'
 	</script>
   </head>
   <body>
@@ -20,22 +21,36 @@
     <div id="buffer">
     Connecting to IRC...
     </div>
+    <br>
     <span><script>document.write(iprompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { run(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
     </body>
 
     <script>
-     var client = new ircClient('irc.freenode.net', 6667, 'SilverBot', 'SilverBot');
+     var client = new ircClient('irc.freenode.net', 6667, myName, myName);
      client.connect()
 
      client.on('ready', function () {
          client.join('#electroncli');
          appendIRCBuffer("Connected!")
+         appendIRCBuffer("------------")
      });
+
+     client.on('CHANMSG', function (data) {
+       /**
+      The data object contains
+      data.receiver : The channel the message was written in prefixed with hash (#)
+      data.sender   : The nick of the person who sent the message
+      data.message  : The message the person sent
+      **/
+      var message = data.sender + ' > ' + data.message;
+      appendIRCBuffer(message)
+    });
 
      function run() {
        var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
        client.say('#electroncli', input);
+       appendIRCBuffer(myName + " > " + input)
 
        document.getElementById('inputMain').scrollIntoView();
        document.getElementById("inputMain").value = ""
