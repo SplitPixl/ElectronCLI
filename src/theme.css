@@ -12,6 +12,16 @@ body {
     font-size: 16px;
 }
 
+.titlebar {
+  background-color: #00FF00;
+  color: #1B1A1F;
+  -webkit-app-region: drag;
+}
+
+.error {
+  color: #FF0000;
+}
+
 .blinker{
     opacity: 1;
     -webkit-animation: blink 0.7s infinite;

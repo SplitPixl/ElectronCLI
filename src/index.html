@@ -8,28 +8,46 @@
 	<script>
 		const appData = require('../package.json');
     var os = require('os')
+
+    var commands = {}
+    var commandList = {}
+
     var prompt = process.env.USERNAME.split(" ")[0].toLowerCase() + "@" + os.hostname() + " $ ";
 	</script>
   </head>
   <body>
-  <div id="buffer">
-    ElectronCLI [Version <script>document.write(appData.version)</script>]<br>Copyright (c) 2016 <script>document.write(appData.author)</script><br>
-    Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.<br><br>
-  </div>
-  <span><script>document.write(prompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }"><!--<span class="blinker">_</span>--></span>
-  <a id="#bottom"></a>
-  </body>
-  <script>
-	// You can also require other files to run in this process
-	require('../renderer.js');
-    var cmds = require("./commands.js")
-    function inputToCLI() {
-      var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-      cmds.run(input, document);
-      document.getElementById('inputMain').scrollIntoView();
-      document.getElementById("inputMain").value = ""
-    }
-  </script>
+    <div class="titlebar">
+        <div style="display:flex;justify-content:flex-end;align-items:center;">
+          <div style="margin-right: 10px; -webkit-app-region: no-drag;"><strong><a onclick="">_</a>   <a onclick="">□</a>   <a onclick="window.close()">X</a></strong></div>
+        </div>
+    </div>
+    <br>
+    <div id="buffer">
+      ElectronCLI [Version <script>document.write(appData.version)</script>]<br>Copyright (c) 2016 <script>document.write(appData.author)</script><br>
+      Node.js <script>document.write(process.versions.node)</script>,
+      Chromium <script>document.write(process.versions.chrome)</script>,
+      and Electron <script>document.write(process.versions.electron)</script>.<br><br>
+    </div>
+    <span><script>document.write(prompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
+    </body>
+
+    <script>
+	   // You can also require other files to run in this process
+     require("./loader.js")
+     function inputToCLI() {
+       var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+       var args = input.split(" ")
+       try{
+         commands[args[0].toLowerCase()].execute(input, args, document);
+       } catch(err) {
+         if(err = "TypeError: Cannot read property 'execute' of undefined"){
+           printToCLI("Command not found. Type \"help\" for a list of commands. " + err )
+         } else {
+           errToCLI("There was an error running that command:<br>" + err)
+         }
+       }
+       document.getElementById('inputMain').scrollIntoView();
+       document.getElementById("inputMain").value = ""
+     }
+     </script>
 </html>
