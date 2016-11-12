@@ -19,6 +19,7 @@
     </div>
     <br><br>
     <div id="buffer">
+      Welcome to the IRC client.<br>
       What will people call you?
     </div>
     <br>
@@ -44,11 +45,14 @@
 
      function run() {
        var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+       var rinput = document.getElementById("inputMain").value
        if(connected){
-          client.say('#electroncli', input);
-          appendIRCBuffer(myName + " > " + input)
-          document.getElementById('inputMain').scrollIntoView();
-          document.getElementById("inputMain").value = ""
+          if(rinput != ""){
+            client.say('#electroncli', rinput);
+            appendIRCBuffer(myName + " > " + input)
+            document.getElementById('inputMain').scrollIntoView();
+            document.getElementById("inputMain").value = ""
+          }
         } else {
           myName = input
           appendIRCBuffer(iprompt + input)
