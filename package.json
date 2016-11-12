@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "convert-units": "^2.0.0",
-    "is-up": "^2.0.0"
+    "is-up": "^2.0.0",
+    "node-irc": "0.0.4"
   }
 }
