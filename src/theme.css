@@ -24,6 +24,8 @@ body {
   background-color: #00FF00;
   color: #1B1A1F;
   -webkit-app-region: drag;
+  width: 100%;
+  position: fixed;
 }
 
 .error {
