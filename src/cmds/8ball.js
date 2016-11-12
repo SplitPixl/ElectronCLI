@@ -7,7 +7,7 @@ e.requireCtx = require;
 
 e.isCommand = true;
 e.hidden = false;
-e.usage = '8ball [stuff]';
+e.usage = '8ball [Optional, Question]';
 e.info = 'Ask the 8ball';
 e.longinfo = '<p>Ask the 8ball.</p>';
 

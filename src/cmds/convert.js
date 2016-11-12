@@ -8,7 +8,7 @@ e.requireCtx = require;
 
 e.isCommand = true;
 e.hidden = false;
-e.usage = '[Amount] [Unit] to [Unit]';
+e.usage = 'convert [Amount] [Unit] to [Unit]';
 e.info = 'Convert any units.';
 e.longinfo = '<p>Convert both digital and physical units.</p>';
 

@@ -8,7 +8,7 @@ e.requireCtx = require;
 
 e.isCommand = true;
 e.hidden = false;
-e.usage = 'down';
+e.usage = 'down [URL]';
 e.info = 'Check if a website is down.';
 e.longinfo = '<p>Check if a website is down, quickly and easily.</p>';
 
