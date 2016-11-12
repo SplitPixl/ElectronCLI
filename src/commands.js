@@ -1,10 +1,9 @@
 const appData = require('../package.json');
 const exec = require('child_process').exec;
-var doc
 
 module.exports = {
 	run(input, document) {
-    doc = document
+    document = document
     var cinput = input.toLowerCase();
 	  let args = cinput.split(' ');
     let argstring = args.slice(1).join(" ");
@@ -22,22 +21,22 @@ module.exports = {
 		break;
 
 		case "clear":
-			doc.getElementById("buffer").innerHTML = "";
+			document.getElementById("buffer").innerHTML = "";
 		break;
 
 		case "about":
 			printToCLI("ElectronCLI is a Command-Line interface built from Electron.<br>ElectronCLI was (and currently is being) developed by " + appData.author + ".");
 		break;
 
-    case "eval":
-      printToCLI(eval(argstring));
-    break;
+		case "eval":
+			printToCLI(eval(argstring));
+		break;
 
-    case "exec":
-      exec(argstring, (error, stdout, stderr) => {
-        printToCLI("<br>" + stdout.replace("\n", "<br>") + stderr)
-      })
-    break;
+		case "exec":
+			exec(argstring, (error, stdout, stderr) => {
+				printToCLI("<br>" + stdout.replace("\n", "<br>") + stderr)
+			})
+		break;
 
 		case "exit":
 			window.close();
@@ -47,27 +46,27 @@ module.exports = {
 		// Large Commands
 
 		case "help":
-      let commands = [
+		let commands = [
 			"You are using ElectronCLI v" + appData.version + ", created by " + appData.author + ".<br><br><strong><u>Commands:</u></strong><br><br>",
 			"8ball - Let the 8 ball decide!",
 			"about - More information on ElectronCLI.",
 			"ping - Pong!"
-      ]
-      printToCLI(commands.join("<br>"));
+		]
+		printToCLI(commands.join("<br>"));
 		break;
 
 		// End of commands
     case "":
-      var buffer = doc.getElementById("buffer").innerHTML
-      doc.getElementById("buffer").innerHTML = buffer + prompt + "<br>"
+      var buffer = document.getElementById("buffer").innerHTML
+      document.getElementById("buffer").innerHTML = buffer + prompt + "<br>"
     break;
 
 		default:
 			printToCLI("Invalid syntax! Type \"help\" for infomation on how to use ElectronCLI.");
 	}
   function printToCLI(output) {
-    var buffer = doc.getElementById("buffer").innerHTML
-    doc.getElementById("buffer").innerHTML = buffer + prompt + input + "<br>" + output + "<br><br>"
+    var buffer = document.getElementById("buffer").innerHTML
+    document.getElementById("buffer").innerHTML = buffer + prompt + input + "<br>" + output + "<br><br>"
   }
   }
 };
