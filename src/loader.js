@@ -1,4 +1,4 @@
-(function (exports, require, module, __filename, __dirname, process, global) { var fs = require("fs")
+var fs = require("fs")
 const path = require('path')
 
 const appData = require('../package.json');
@@ -76,5 +76,3 @@ global.errToCLI = function(output) {
   var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   document.getElementById("buffer").innerHTML = buffer + "<span>" + prompt + input + "</span><br><span class=\"error\">" + output + "</span><br><br>\n"
 }
-
-});
