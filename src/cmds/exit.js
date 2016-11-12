@@ -7,10 +7,10 @@ e.requireCtx = require;
 
 e.isCommand = true;
 e.hidden = false;
-e.usage = 'ping';
-e.info = 'Pong!\nFind the command latency.';
-e.longinfo = '<p>Pong!</p><p>Find the command latency.</p>';
+e.usage = 'exit';
+e.info = 'Quits ElectronCTL';
+e.longinfo = '<p>Quits ElectronCTL</p>';
 
 e.execute = (input, args, document) => {
-  printToCLI("Pong!")
+  window.close();
 };

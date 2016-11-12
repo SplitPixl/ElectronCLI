@@ -12,7 +12,7 @@ e.info = 'Evaluates code for you,';
 e.longinfo = '<p>Evaluates code for you./p>';
 
 e.execute = (input, args, document) => {
-  var rawinput = document.getElementById("inputMain").value
+  var rawinput = document.getElementById("inputMain").value.substring(5)
   try{
     printToCLI(eval(rawinput));
   } catch(err) {

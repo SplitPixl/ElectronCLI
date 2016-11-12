@@ -76,3 +76,25 @@ global.errToCLI = function(output) {
   var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   document.getElementById("buffer").innerHTML = buffer + "<span>" + prompt + input + "</span><br><span class=\"error\">" + output + "</span><br><br>\n"
 }
+
+function inputToCLI() {
+  var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  var args = input.split(" ")
+  if(args[0] = ""){
+  try{
+    commands[args[0].toLowerCase()].execute(input, args, document);
+  } catch(err) {
+    if(err = "TypeError: Cannot read property 'execute' of undefined"){
+      printToCLI("Command not found. Type \"help\" for a list of commands. " + err )
+    } else {
+      errToCLI("There was an error running that command:<br>" + err)
+    }
+  }
+  }
+  else {
+    var buffer = document.getElementById("buffer").innerHTML
+    document.getElementById("buffer").innerHTML = buffer + prompt + "<br>"
+  }
+  document.getElementById('inputMain').scrollIntoView();
+  document.getElementById("inputMain").value = ""
+}

@@ -7,10 +7,10 @@ e.requireCtx = require;
 
 e.isCommand = true;
 e.hidden = false;
-e.usage = 'ping';
-e.info = 'Pong!\nFind the command latency.';
-e.longinfo = '<p>Pong!</p><p>Find the command latency.</p>';
+e.usage = 'clear';
+e.info = 'Clears the buffer';
+e.longinfo = '<p>Clears the command buffer</p>';
 
 e.execute = (input, args, document) => {
-  printToCLI("Pong!")
+  document.getElementById("buffer").innerHTML = "";
 };

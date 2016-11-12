@@ -34,20 +34,5 @@
     <script>
 	   // You can also require other files to run in this process
      require("./loader.js")
-     function inputToCLI() {
-       var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-       var args = input.split(" ")
-       try{
-         commands[args[0].toLowerCase()].execute(input, args, document);
-       } catch(err) {
-         if(err = "TypeError: Cannot read property 'execute' of undefined"){
-           printToCLI("Command not found. Type \"help\" for a list of commands. " + err )
-         } else {
-           errToCLI("There was an error running that command:<br>" + err)
-         }
-       }
-       document.getElementById('inputMain').scrollIntoView();
-       document.getElementById("inputMain").value = ""
-     }
      </script>
 </html>
