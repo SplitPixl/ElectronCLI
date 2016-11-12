@@ -1,5 +1,5 @@
-const appData = require('../package.json');
-const exec = require('child_process').exec;
+const appData = require('../package.json'),
+			exec = require('child_process').exec;
 
 module.exports = {
 	run(input, document) {
