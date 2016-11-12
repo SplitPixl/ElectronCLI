@@ -9,7 +9,7 @@ e.requireCtx = require;
 
 e.isCommand = true;
 e.hidden = false;
-e.usage = '';
+e.usage = 'irc';
 e.info = 'Send Text message to IRC.';
 e.longinfo = '<p>Send Text message to IRC.</p>';
 
