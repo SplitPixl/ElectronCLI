@@ -1,5 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
-/*TODO: Make font local*/
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: url('font/UbuntuMono-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono-Bold';
+  src: url('font/UbuntuMono-Bold.ttf') format('ttf');
+}
+
 
 *:focus {
     outline: none;
