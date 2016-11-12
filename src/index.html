@@ -12,7 +12,12 @@
     var commands = {}
     var commandList = {}
 
-    var prompt = process.env.USERNAME.split(" ")[0].toLowerCase() + "@" + os.hostname() + " $ ";
+    var rprompt = '$'
+    if(os.platform() == 'win32'){
+      rprompt = process.env.USERNAME.split(" ")[0].toLowerCase() + "@" + os.hostname() + " $ ";
+    } else {
+      rprompt = process.env.USER + "@" + os.hostname().split(".local")[0] + " $ ";
+    }
 	</script>
   </head>
   <body>
@@ -28,7 +33,7 @@
       Chromium <script>document.write(process.versions.chrome)</script>,
       and Electron <script>document.write(process.versions.electron)</script>.<br><br>
     </div>
-    <span><script>document.write(prompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { run(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
+    <span><script>document.write(rprompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { run(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
     </body>
 
     <script>
