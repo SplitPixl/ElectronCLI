@@ -13,7 +13,6 @@
     "electron-winstaller": "^2.4.1"
   },
   "dependencies": {
-    "convert-units": "^2.0.0",
     "is-up": "^2.0.0"
   }
 }
