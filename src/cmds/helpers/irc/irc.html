@@ -17,43 +17,46 @@
           <div style="margin-right: 10px; -webkit-app-region: no-drag;"><strong><a onclick="" class="titleFunc">_</a>   <a onclick="" class="titleFunc">□</a>   <a onclick="window.close()" class="titleFunc">X</a></strong></div>
         </div>
     </div>
-    <br>
+    <br><br>
     <div id="buffer">
-    Connecting to IRC...
+      What will people call you?
     </div>
     <br>
     <span><script>document.write(iprompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { run(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
     </body>
 
     <script>
+     var connected = false
      var client = new ircClient('irc.freenode.net', 6667, myName, myName);
-     client.connect()
 
      client.on('ready', function () {
+         connected = true
          client.join('#electroncli');
          appendIRCBuffer("Connected!")
          appendIRCBuffer("------------")
      });
 
      client.on('CHANMSG', function (data) {
-       /**
-      The data object contains
-      data.receiver : The channel the message was written in prefixed with hash (#)
-      data.sender   : The nick of the person who sent the message
-      data.message  : The message the person sent
-      **/
       var message = data.sender + ' > ' + data.message;
-      appendIRCBuffer(message)
+      appendIRCBuffer(message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'))
+      document.getElementById('inputMain').scrollIntoView();
     });
 
      function run() {
        var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-
-       client.say('#electroncli', input);
-       appendIRCBuffer(myName + " > " + input)
-
-       document.getElementById('inputMain').scrollIntoView();
-       document.getElementById("inputMain").value = ""
+       if(connected){
+          client.say('#electroncli', input);
+          appendIRCBuffer(myName + " > " + input)
+          document.getElementById('inputMain').scrollIntoView();
+          document.getElementById("inputMain").value = ""
+        } else {
+          myName = input
+          appendIRCBuffer(iprompt + input)
+          client.connect()
+          appendIRCBuffer("<br>Connecting...")
+          document.getElementById('inputMain').scrollIntoView();
+          document.getElementById("inputMain").value = ""
+        }
      }
 
      function appendIRCBuffer(output) {
