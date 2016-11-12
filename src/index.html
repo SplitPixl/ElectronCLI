@@ -8,7 +8,7 @@
 	<script>
 		const appData = require('../package.json');
     var os = require('os')
-    var prompt = process.env.USERNAME + "@" + os.hostname() + " $ ";
+    var prompt = process.env.USERNAME.split(" ")[0].toLowerCase() + "@" + os.hostname() + " $ ";
 	</script>
   </head>
   <body>
