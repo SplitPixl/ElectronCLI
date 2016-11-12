@@ -1,4 +1,5 @@
 const appData = require('../package.json');
+const exec = require('child_process').exec;
 var doc
 
 module.exports = {
@@ -6,6 +7,7 @@ module.exports = {
     doc = document
     var cinput = input.toLowerCase();
 	  let args = cinput.split(' ');
+    let argstring = args.slice(1).join(" ");
     switch (args[0]) {
 
 		// Small Commands
@@ -27,6 +29,15 @@ module.exports = {
 			printToCLI("ElectronCLI is a Command-Line interface built from Electron.<br>ElectronCLI was (and currently is being) developed by " + appData.author + ".");
 		break;
 
+    case "eval":
+      printToCLI(eval(argstring));
+    break;
+
+    case "exec":
+      exec(argstring, (error, stdout, stderr) => {
+        printToCLI("<br>" + stdout + stderr)
+      })
+    break;
 
 
 		// Large Commands
