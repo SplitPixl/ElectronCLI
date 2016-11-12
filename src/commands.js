@@ -10,7 +10,7 @@ module.exports = {
     
   	function printToCLI(output) {
     	var buffer = document.getElementById("buffer").innerHTML
-    	document.getElementById("buffer").innerHTML = buffer + prompt + input + "<br>" + output + "<br><br>"
+    	document.getElementById("buffer").innerHTML = buffer +rprompt + input + "<br>" + output + "<br><br>"
   	}
   }
 };
