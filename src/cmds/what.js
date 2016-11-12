@@ -14,7 +14,7 @@ e.longinfo = '<p>???</p>';
 
 e.execute = (input, args, document) => {
     let win = new BrowserWindow({ width: 400, height: 320 })
-    win.on('close', function () { win = null })
+    win.on('close', function () { win = null; alert("dont do that") })
     win.loadURL("https://splitpixl.xyz/splart")
     win.show()
     printToCLI("")
