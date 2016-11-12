@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	   <title>ElectronCLI</title>
+    <link rel="stylesheet" type="text/css" href="../../../theme.css">
+	<script>
+    var os = require('os')
+    var ircClient = require('node-irc');
+    var iprompt = '> '
+	</script>
+  </head>
+  <body>
+    <div class="titlebar">
+        <div style="display:flex;justify-content:flex-end;align-items:center;">
+          <div style="margin-right: 10px; -webkit-app-region: no-drag;"><strong><a onclick="" class="titleFunc">_</a>   <a onclick="" class="titleFunc">□</a>   <a onclick="window.close()" class="titleFunc">X</a></strong></div>
+        </div>
+    </div>
+    <br>
+    <div id="buffer">
+    Connecting to IRC...
+    </div>
+    <span><script>document.write(iprompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { run(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
+    </body>
+
+    <script>
+     var client = new ircClient('irc.freenode.net', 6667, 'SilverBot', 'SilverBot');
+     client.connect()
+
+     client.on('ready', function () {
+         client.join('#electroncli');
+         appendIRCBuffer("Connected!")
+     });
+
+     function run() {
+       var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+
+       client.say('#electroncli', input);
+
+       document.getElementById('inputMain').scrollIntoView();
+       document.getElementById("inputMain").value = ""
+     }
+
+     function appendIRCBuffer(output) {
+       var buffer = document.getElementById("buffer").innerHTML
+       document.getElementById("buffer").innerHTML = buffer + "<br><span>" + output + "</span>\n"
+     }
+
+     </script>
+</html>

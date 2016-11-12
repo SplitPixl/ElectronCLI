@@ -1,5 +1,6 @@
 var e = module.exports = {};
-var ircClient = require('node-irc');
+const BrowserWindow = require('electron').remote.BrowserWindow
+const path = require('path')
 
 e.init = () => {
 
@@ -13,10 +14,10 @@ e.info = 'Send Text message to IRC.';
 e.longinfo = '<p>Send Text message to IRC.</p>';
 
 e.execute = (input, args) => {
-    var client = new ircClient('irc.freenode.net', 6667, 'SilverBot', 'SilverBot');
-    client.connect()
-    client.on('ready', function () {
-        client.join('#electroncli');
-        client.say('#electroncli', 'When the command works just right.');
-    });
+  const modalPath = path.join('file://', __dirname, '/helpers/irc/irc.html')
+  let win = new BrowserWindow({ width: 400, height: 320, frame: false })
+  win.on('close', function () { win = null })
+  win.loadURL(modalPath)
+  win.show()
+  printToCLI("Irc client started.")
 };
