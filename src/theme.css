@@ -36,6 +36,7 @@ body {
   font-family: 'Ubuntu Mono', monospace;
   font-size: 16px;
   min-width: 50%;
+  cursor: default;
 }
 
 .titleFunc {
