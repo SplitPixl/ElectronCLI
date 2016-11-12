@@ -42,6 +42,10 @@ module.exports = {
 		break;
 
 		// End of commands
+    case "":
+      var buffer = doc.getElementById("buffer").innerHTML
+      doc.getElementById("buffer").innerHTML = buffer + prompt + "<br>"
+    break;
 
 		default:
 			printToCLI("Invalid syntax! Type \"help\" for infomation on how to use ElectronCLI.");
