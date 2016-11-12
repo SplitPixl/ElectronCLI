@@ -35,9 +35,13 @@ module.exports = {
 
     case "exec":
       exec(argstring, (error, stdout, stderr) => {
-        printToCLI("<br>" + stdout + stderr)
+        printToCLI("<br>" + stdout.replace("\n", "<br>") + stderr)
       })
     break;
+
+		case "exit":
+			window.close();
+		break;
 
 
 		// Large Commands

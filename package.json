@@ -1,6 +1,6 @@
 {
   "name": "electron-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Not sure yet.",
   "main": "main.js",
   "scripts": {
