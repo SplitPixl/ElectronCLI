@@ -28,11 +28,34 @@
       Chromium <script>document.write(process.versions.chrome)</script>,
       and Electron <script>document.write(process.versions.electron)</script>.<br><br>
     </div>
-    <span><script>document.write(prompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { inputToCLI(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
+    <span><script>document.write(prompt)</script><input id="inputMain" class="inputMain" onkeydown="if (event.keyCode == 13) { run(); return false; }" autofocus><!--<span class="blinker">_</span>--></span>
     </body>
 
     <script>
 	   // You can also require other files to run in this process
      require("./loader.js")
+
+     function run() {
+       var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+       var args = input.split(" ")
+       if(args[0] != ""){
+       try{
+         commands[args[0].toLowerCase()].execute(input, args, document);
+       } catch(err) {
+         if(err.message === "Cannot read property 'execute' of undefined"){
+           printToCLI("Command not found. Type \"help\" for a list of commands.")
+         } else {
+           errToCLI("There was an error running that command:<br>" + err)
+         }
+       }
+       }
+       else {
+         var buffer = document.getElementById("buffer").innerHTML
+         document.getElementById("buffer").innerHTML = buffer + prompt + "<br>"
+       }
+       document.getElementById('inputMain').scrollIntoView();
+       document.getElementById("inputMain").value = ""
+     }
+
      </script>
 </html>

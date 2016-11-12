@@ -77,7 +77,7 @@ global.errToCLI = function(output) {
   document.getElementById("buffer").innerHTML = buffer + "<span>" + prompt + input + "</span><br><span class=\"error\">" + output + "</span><br><br>\n"
 }
 
-function inputToCLI() {
+function run() {
   var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   var args = input.split(" ")
   if(args[0] = ""){

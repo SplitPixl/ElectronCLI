@@ -16,14 +16,11 @@ e.longinfo = '<p>Runs shell commands./p>';
 e.execute = (input, args, document) => {
   var rawinput = document.getElementById("inputMain").value.substring(5)
   exec(rawinput, function(err, stdout, stderr) {
-    if(err){
-      errToCLI(err);
-    }
     if(stderr){
-      errToCLI(stderr);
+      errToCLI(stderr.replace("\n","<br>"));
     }
     else {
-      printToCLI(stdout)
+      printToCLI(stdout.replace("\n","<br>"));
     }
-  }
+  });
 };
