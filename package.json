@@ -1,5 +1,5 @@
 {
-  "name": "electron-cli",
+  "name": "ElectronCLI",
   "version": "0.0.1",
   "description": "Not sure yet.",
   "main": "main.js",
@@ -12,7 +12,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^1.4.1",
-    "electron-winstaller": "^2.4.1"
+    "electron-builder": "8.4.1"
   },
   "dependencies": {
     "convert-units": "^2.0.0",
@@ -25,6 +25,10 @@
     "win": {
       "target": "squirrel",
       "iconURL": "https://splitpixl.xyz/assets/images/rjaWRHU.ico"
+    },
+    "mac": {
+      "target": "default",
+      "category": "public.app-category.developer-tools"
     }
   }
 }
