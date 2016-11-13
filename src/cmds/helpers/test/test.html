@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="http://jqueryui.com//resources/demos/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable" ).draggable();
+  } );
+  </script>
+</head>
+<body style="background-color: #313131">
+
+<div id="draggable" class="ui-widget-content" style="display: inline; display: inline-block;">
+  <img src="https://splitpixl.xyz/assets/images/icon.jpg">
+</div>
+
+<center>
+  <br><br>
+  <button onclick="window.close()">exit</button>
+</center>
+
+</body>
+</html>
