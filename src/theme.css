@@ -57,6 +57,14 @@ body {
     -webkit-user-select: none;
 }
 
+.titleLeft {
+    float: left;
+}
+
+.titleRight {
+    float: right;
+}
+
 @keyframes blink{
     0% { opacity:1; }
     50% { opacity:0; }
