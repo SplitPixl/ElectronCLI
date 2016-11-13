@@ -18,7 +18,8 @@
     "convert-units": "^2.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "is-up": "^2.0.0",
-    "node-irc": "0.0.4"
+    "node-irc": "0.0.4",
+    "node-notifier": "^4.6.1"
   },
   "build": {
     "appId": "electron.cli",
