@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
 	   <title>ElectronCLI</title>
     <link rel="stylesheet" type="text/css" href="theme.css">
-    <script src="jquery.js"></script>
 	<script>
 		const appData = require('../package.json');
     var os = require('os')
@@ -19,6 +18,9 @@
       rprompt = process.env.USER + "@" + os.hostname().split(".local")[0] + " $ ";
     }
 	</script>
+  <script>
+  window.$ = window.jQuery = require('./jquery.js');
+  </script>
   </head>
   <body>
     <div class="titlebar">
