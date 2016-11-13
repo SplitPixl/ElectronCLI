@@ -4,7 +4,9 @@
   "description": "Not sure yet.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "author": "SplitPixl and MattSilverblood",
   "license": "CC0-1.0",
@@ -14,7 +16,15 @@
   },
   "dependencies": {
     "convert-units": "^2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
     "is-up": "^2.0.0",
     "node-irc": "0.0.4"
+  },
+  "build": {
+    "appId": "electron.cli",
+    "win": {
+      "target": "squirrel",
+      "iconURL": "https://splitpixl.xyz/assets/images/rjaWRHU.ico"
+    }
   }
 }
