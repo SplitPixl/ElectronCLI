@@ -8,7 +8,6 @@
     var os = require('os')
     var ircClient = require('node-irc');
     var iprompt = '> '
-    var myName = 'Pixld'
 	</script>
   </head>
   <body>
@@ -35,10 +34,12 @@
 
     <script>
      var connected = false
-     var client = new ircClient('irc.freenode.net', 6667, myName, myName);
+     var myName = 'eleccli' + Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+     var client = new ircClient('vps.splitpixl.xyz', 6667, myName, myName);
 
      client.on('ready', function () {
          connected = true
+         if(myName != ""){client.nick(myName)}
          client.join('#electroncli');
          appendIRCBuffer("Connected!")
          appendIRCBuffer("------------")
@@ -74,6 +75,19 @@
        var buffer = document.getElementById("buffer").innerHTML
        document.getElementById("buffer").innerHTML = buffer + "<br><span>" + output + "</span>\n"
      }
+     client.on('JOIN', function (data) {
+       var message = data.sender + ' has joined the channel.';
+       appendIRCBuffer(message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'))
+     });
 
+     client.on('QUIT', function (data) {
+       var message = data.sender + ' has left the channel.';
+       appendIRCBuffer(message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'))
+     });
+
+     client.on('PART', function (data) {
+       var message = data.sender + ' has left the channel.';
+       appendIRCBuffer(message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'))
+     });
      </script>
 </html>
