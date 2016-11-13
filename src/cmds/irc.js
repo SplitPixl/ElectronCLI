@@ -15,7 +15,7 @@ e.longinfo = '<p>Send Text message to IRC.</p>';
 
 e.execute = (input, args) => {
   const modalPath = path.join('file://', __dirname, '/helpers/irc/irc.html')
-  let win = new BrowserWindow({ width: 1024, height: 768, frame: false })
+  let win = new BrowserWindow({ width: 1024, height: 768, frame: false, backgroundColor: '#1B1A1F' })
   win.on('close', function () { win = null })
   win.loadURL(modalPath)
   win.show()
