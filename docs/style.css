@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: url('https://fonts.googleapis.com/css?family=Ubuntu+Mono') format('woff2');
+}
+
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color: #dbdbdb;
+}
+
+.header {
+    padding: 100px;
+    background-color: #1B1A1F;
+    color: #fff;
+    font-family: 'Ubuntu Mono';
+    text-align: center;
+    
+}
+
+.button {
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 150px;
+    line-height: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.button:hover {
+    border: 2px solid #00FF00;
+}
+
+.header h1 {
+    font-size: 72px;
+}
+
+.header a {
+    color: #00FF00;
+}
