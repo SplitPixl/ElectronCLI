@@ -1,7 +1,4 @@
-@font-face {
-  font-family: 'Ubuntu Mono';
-  src: url('https://fonts.googleapis.com/css?family=Ubuntu+Mono') format('woff2');
-}
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 
 * {
     margin:0;
