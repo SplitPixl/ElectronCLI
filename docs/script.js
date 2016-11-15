@@ -5,3 +5,7 @@ function goToGithub() {
 function goToDL() {
     document.location.href = "https://github.com/SplitPixl/ElectronCLI/releases";
 }
+
+function goToDocs() {
+    document.location.href = "docs.html";
+}

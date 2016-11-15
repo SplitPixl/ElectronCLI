@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 
+@keyframes fadein {
+    0% {opacity:0}
+    100% {opacity: 1}
+}
+
 * {
-    margin:0;
     padding:0;
+
+    animation-name: fadein;
+    animation-duration: 0.5s;
 }
 
 body {
     background-color: #1B1A1F;
+    color: #fff;
+    font-family: 'Ubuntu Mono';
 }
 
 .header {
@@ -37,4 +46,8 @@ body {
 
 .header a {
     color: #00FF00;
+}
+
+#description {
+    text-align: center;
 }
