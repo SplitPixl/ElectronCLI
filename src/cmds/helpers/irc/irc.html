@@ -46,9 +46,14 @@
      });
 
      client.on('CHANMSG', function (data) {
+      if(data.sender === "CLIBridge"){
+        var message = data.message;
+        appendIRCBuffer(message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'))
+      } else {
       var message = data.sender + ' > ' + data.message;
       appendIRCBuffer(message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'))
       document.getElementById('inputMain').scrollIntoView();
+      }
     });
 
      function run() {
