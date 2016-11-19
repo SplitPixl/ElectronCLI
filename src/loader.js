@@ -68,7 +68,13 @@ function buildCommand(commandName) {
 global.printToCLI = function(output) {
   var buffer = document.getElementById("buffer").innerHTML
   var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
-  document.getElementById("buffer").innerHTML = buffer + "<span>" +rprompt + input + "</span><br><span>" + output + "</span><br><br>\n"
+  document.getElementById("buffer").innerHTML = buffer + "<span>" +rprompt + input + "</span><br><span>" + output + "</span><br>\n"
+}
+
+global.appendToCLI = function(output) {
+  var buffer = document.getElementById("buffer").innerHTML
+  var input = document.getElementById("inputMain").value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  document.getElementById("buffer").innerHTML = buffer + "<br>" + output + "\n"
 }
 
 global.errToCLI = function(output) {
